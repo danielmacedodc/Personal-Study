@@ -1,14 +1,27 @@
 package com.globallabs.springwebmvc.model;
 
 
-import javax.validation.constraints.NotBlank;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Table(name = "jedi")
 public class Jedi {
 
-    @NotBlank(message = "Name cannot be blank")
+    @Id
+    @Column(name = "id_jedi")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Size(min = 3, max = 10, message = "Nome deve conter entre 3 e 10 caracteres.")
+    @NotBlank(message = "Name cannot be blank.")
+    @Column(name = "name")
     private String name;
 
     @NotBlank(message = "Name cannot be blank")
+    @Column(name = "last_name")
     private String lastName;
 
     public Jedi(final String name, final String lastName) {
@@ -16,7 +29,7 @@ public class Jedi {
         this.lastName = lastName;
     }
 
-    public Jedi() {
+    public Jedi(Jedi jedi) {
     }
 
     public String getName() {
