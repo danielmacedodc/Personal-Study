@@ -1,7 +1,7 @@
 package com.globallabs.springwebmvc.controller;
 
 import com.globallabs.springwebmvc.model.Jedi;
-import com.globallabs.springwebmvc.repository.JediRepository;
+import com.globallabs.springwebmvc.repository.ExampleJediRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
-
 @Controller
 public class JediController {
 
     @Autowired
-    private JediRepository jediRepository;
+    private ExampleJediRepository jediRepository;
 
     @GetMapping("/jedi")
     public ModelAndView jedi()
